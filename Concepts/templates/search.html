@@ -1,16 +1,33 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="content-section">
-  <form method="post" action="">
-    {{ form.hidden_tag() }}
-    <fieldset class="form-group">
-      <legend class="border-bottom mb-4"></legend>
-      <div class="form-group">
-        {{ form.searchfield.label(class="form-control-label") }}
-        {{ form.searchfield(size=90, maxlength=50) }}
-        {{ form.submit_btn.label(class="btn btn-outline-info") }}
-      </div>
-  </form>
-</div>
+{% extends 'base.html' %}
+
+{% block head%}
 
 {% endblock %}
+
+{% block body%}
+<div class="container">
+    <div class="row">
+        <div class="col-xl-9 mx-auto position-relative">
+            <h1 class="mb-5">Your news.</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
+            <form method="post" action="/search">
+                <div class="row">
+                    {{ form.hidden_tag() }}
+                    
+                    {{ form.searchfield(style="height: 48px; width: 50%;", placeholder="Search...", class="form-control form-control-lg", type="search", id="query", placeholder="Search the news...") }}
+                    
+                    {{ form.submit_btn(class="btn btn-primary btn-lg", type="submit", style="width: 50%") }}
+                </div>
+            </form>
+        </div>
+        <div class="col-xl-9 mx-auto position-relative">
+            <h1 class="mb-5"></h1>
+        </div>
+    </div>
+    <div class="col-xl-9 mx-auto position-relative" id="test">
+        <h1 class="mb-4" id="response" name="response">{{ summary_text }}</h1>
+    </div>
+</div>
+{% endblock %}
+

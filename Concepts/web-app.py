@@ -57,7 +57,7 @@ def search_results():
         summary_text = summarizer(summary, max_length=1000, min_length=50)[0]['summary_text']
         #summary_text = summarizer(extractive_summary, max_length=1000, min_length=5, truncation=True)[0]['summary_text']
 
-        return '<h1>{}'.format(summary_text)
+        return render_template('search.html', summary_text=summary_text, form=form)
     else:
         return render_template('search.html', form=form)
 
